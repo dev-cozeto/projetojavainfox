@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  * @author Victor Cozeto
  */
 public class TelaLogin extends javax.swing.JFrame {
-    
+
     Connection conexao = null; // Variável do módulo de conexão
 
 //-----------------Executa as instruções SQL---------------------------
@@ -43,20 +43,31 @@ public class TelaLogin extends javax.swing.JFrame {
             //se existir usuário e senha correspondente
             //next é o que verifica se há usuário ou senha correspondentes
             if (rs.next()) {
-                //Vai verificar se houver os usuários, será liberado a tela principal
-                TelaPrincipal principal = new TelaPrincipal();
-                principal.setVisible(true);// abre o formulário tela principal
-                this.dispose();  // Garante o fechamento do formulário ao chamar o da tela principal
+                // a linha abaixo obtem o conteúdo do campo perfil da tabela tbusuarios
+                String perfil = rs.getString(6);
+                //System.out.println(perfil);
+
+                // ---- A estrutura abaixo faz o tratamento do perfil do usuário
+                if (perfil.equals("admin")) {
+                    //Vai verificar se houver os usuários, será liberado a tela principal
+                    TelaPrincipal principal = new TelaPrincipal();
+                    principal.setVisible(true);// abre o formulário tela principal
+                    TelaPrincipal.MenRelSer.setEnabled(true);
+                    TelaPrincipal.MenCadUsu.setEnabled(true);
+                    this.dispose();  // Garante o fechamento do formulário ao chamar o da tela principal
+                } else {
+                }
+
                 conexao.close();
-             
+
             } else {
                 JOptionPane.showMessageDialog(null, "Usuário e/ou senha inválido(s)!");
             }
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
-        
+
     }
 
     /**
@@ -72,7 +83,7 @@ public class TelaLogin extends javax.swing.JFrame {
             //lblStatus.setText("Conectado");
             lblStatus.setIcon(new javax.swing.ImageIcon(getClass()
                     .getResource("/br/com/infox/icones/dbok.png")));
-            
+
         } else {
             // lblStatus.setText("Não Conectado");
             lblStatus.setIcon(new javax.swing.ImageIcon(getClass()
