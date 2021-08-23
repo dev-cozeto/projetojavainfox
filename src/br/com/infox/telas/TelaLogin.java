@@ -8,6 +8,7 @@ package br.com.infox.telas;
 //importação das ferramentas de conexão 
 import java.sql.*;
 import br.com.infox.dal.ModuloConexao;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -54,8 +55,14 @@ public class TelaLogin extends javax.swing.JFrame {
                     principal.setVisible(true);// abre o formulário tela principal
                     TelaPrincipal.MenRelSer.setEnabled(true);
                     TelaPrincipal.MenCadUsu.setEnabled(true);
+                    TelaPrincipal.lblUsuario.setText(rs.getString(2));
+                    TelaPrincipal.lblUsuario.setForeground(Color.red);
                     this.dispose();  // Garante o fechamento do formulário ao chamar o da tela principal
                 } else {
+                    TelaPrincipal principal = new TelaPrincipal();
+                    principal.setVisible(true);// abre o formulário tela principal
+                    TelaPrincipal.lblUsuario.setText(rs.getString(2));
+                    this.dispose();  // Garante o fechamento do formulário ao chamar o da tela principal
                 }
 
                 conexao.close();
