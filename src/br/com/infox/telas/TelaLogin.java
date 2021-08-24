@@ -60,9 +60,10 @@ public class TelaLogin extends javax.swing.JFrame {
                     this.dispose();  // Garante o fechamento do formulário ao chamar o da tela principal
                 } else {
                     TelaPrincipal principal = new TelaPrincipal();
-                    principal.setVisible(true);// abre o formulário tela principal
+                    principal.setVisible(true);
                     TelaPrincipal.lblUsuario.setText(rs.getString(2));
-                    this.dispose();  // Garante o fechamento do formulário ao chamar o da tela principal
+                    this.dispose();
+                    
                 }
 
                 conexao.close();
