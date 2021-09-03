@@ -16,12 +16,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cliente"/>
               </Properties>
-<<<<<<< HEAD
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenCadCliActionPerformed"/>
               </Events>
-=======
->>>>>>> f25b26c5974092a0f6c8992795c762526793c278
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="MenCadOs">
               <Properties>
