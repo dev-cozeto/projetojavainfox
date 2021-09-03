@@ -104,3 +104,19 @@ SELECT idcli AS ID, nomecli AS Nome, endcli AS Endereço, fonecli AS Telefone,
 emailcli AS Email from tbclientes;  
 
 describe tbos;
+
+use dbinfox;
+select * from tbclientes;
+select dicli,nomecli,fonecli from tbclientes where nomecli like 'jo%';
+-- A linha abaixo cria um apelido aos campos da tabela
+select idcli as ID, nomecli as Nome, fonecli AS Telefone from tbclientes;
+
+USE dbinfox;
+DESCRIBE tbos;
+-- a linha abaixo altera a tabela adicionando um campo em uma determinada posição
+ALTER TABLE tbos ADD tipo VARCHAR(15) NOT NULL AFTER data_os;
+ALTER TABLE tbos ADD situacao VARCHAR(20) NOT NULL AFTER tipo;
+SELECT * FROM tbos; 
+
+
+
