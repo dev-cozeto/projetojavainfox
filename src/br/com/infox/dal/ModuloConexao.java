@@ -17,7 +17,7 @@ public class ModuloConexao {
     public static Connection conector() {
         Connection conexao = null;
         //A linha abaixo chama o driver
-        String driver = "com.mysql.cj.jdbc.Driver";
+        String driver = "com.mysql.jdbc.Driver";
         //Armazenando informações referente ao banco
         String url = "jdbc:mysql://localhost:3307/dbinfox";
         String user = "root";

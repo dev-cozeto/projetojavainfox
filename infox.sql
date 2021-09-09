@@ -118,5 +118,10 @@ ALTER TABLE tbos ADD tipo VARCHAR(15) NOT NULL AFTER data_os;
 ALTER TABLE tbos ADD situacao VARCHAR(20) NOT NULL AFTER tipo;
 SELECT * FROM tbos; 
 
+USE dbinfox;
+select * from tbclientes;
+-- A instrução abaixo seleciona e ordena por nome todos os clientes cadastrados
+SELECT * FROM tbclientes order by nomecli;
+
 
 
