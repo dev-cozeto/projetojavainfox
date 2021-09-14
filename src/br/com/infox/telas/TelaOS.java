@@ -7,8 +7,12 @@ package br.com.infox.telas;
 
 import java.sql.*;
 import br.com.infox.dal.ModuloConexao;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -216,6 +220,35 @@ public class TelaOS extends javax.swing.JInternalFrame {
             
         }
     }
+    
+    //Método para imprimir uma O.S
+    private void imprimir_os(){
+        // Gerando uma impressão de O.S
+        int confirma = JOptionPane.showConfirmDialog(null, "Confirma a impressão dessa O.S?", "Atenção",
+                JOptionPane.YES_NO_OPTION);
+        if (confirma == JOptionPane.YES_OPTION) {
+
+            //imprimir o relatório com o framework JasperReport
+            try {
+                //usando a classe HashMap para criar um filtro
+                HashMap filtro = new HashMap();
+                filtro.put("os",Integer.parseInt(txtOs.getText()));
+                
+                
+                //Usando a classe JasperPrint para preparar a impressão de um relatório               
+                JasperPrint print = JasperFillManager.fillReport("src\\relatorios\\os.jasper", filtro, conexao);
+
+                // A linha abaixo exibe o relatório através da classe jasper viewver
+                JasperViewer.viewReport(print, false);
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+
+        }
+                       
+    }              
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -608,7 +641,8 @@ public class TelaOS extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnOsExcluirActionPerformed
 
     private void btnOsImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOsImprimirActionPerformed
-        // TODO add your handling code here:
+        // Método para imprimir a o.s
+        imprimir_os();
     }//GEN-LAST:event_btnOsImprimirActionPerformed
 
     private void txtCliPesquisarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCliPesquisarKeyReleased
